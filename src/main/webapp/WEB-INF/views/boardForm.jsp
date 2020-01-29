@@ -10,23 +10,26 @@
 <head>
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<title>Board Detail</title>
+	<title>Board Form</title>
 </head>
 <body>
+<form action="/editBoard" method="post">
+	
 	<div>
-		<div>작성자: ${detail.writer}</div>
+		<input type="hidden" name="id" value="${detail.id}" />
+		<div>작성자: <input type="text" name="writer" value="${detail.writer}" /> </div>
 		<div>등록일자: ${detail.create_date}</div>
 	</div>
 	<div>
-		<h2>${detail.title}</h2>
+		<h2><input type="text" name="title" value="${detail == null ? '' : detail.title}"/></h2>
 	</div>
 	<div>
-		<p>${detail.content}</p>
+		<h2><input type="text" name="content" value="${detail == null ? '' : detail.content}"/></h2>
 	</div>
 	<div>
-		<a href="/deleteBoard?id=${detail.id}">삭제</a>
-		<a href="/boardEditForm?id=${detail.id}">수정</a>
 		<a href="/searchBoard?limit=10&pageNum=1">목록</a>
+		<button>저장</button>
 	</div>
+</form>
 </body>
 </html>

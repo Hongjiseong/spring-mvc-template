@@ -13,6 +13,9 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- 정적 경로매핑 : 
+	     - 특정 폴더를 공개하는 옵션입니다.
+	     - ROOT_URL 경로에 resources 폴더에 들어있는 파일경로를 입력하면 그 파일을 확인할 수 있습니다. -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -21,8 +24,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.study.app" />
-	
-	
+	<context:component-scan base-package="com.study.app">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	
 </beans:beans>
